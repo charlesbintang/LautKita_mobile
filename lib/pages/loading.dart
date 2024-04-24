@@ -33,6 +33,7 @@ class _LoadingState extends State<Loading> {
           if (snap.snapshot.value != null) {
             userName = (snap.snapshot.value as Map)['name'];
             role = (snap.snapshot.value as Map)['role'];
+            isValid = (snap.snapshot.value as Map)['isValid'];
 
             print(userName);
             print(role);
@@ -44,16 +45,26 @@ class _LoadingState extends State<Loading> {
         });
       }
     }).then((value) {
-      if (role == 'volunteer') {
-        Navigator.of(context).pushReplacementNamed('/home_page');
-      } else {
-        Navigator.of(context).pushReplacementNamed('/c_home_page');
+      switch (role) {
+        case 'community':
+          if (isValid) {
+            Navigator.of(context).pushReplacementNamed('/c_home_page');
+          } else {
+            Navigator.of(context).pushReplacementNamed('/onboarding-community');
+          }
+          break;
+        case 'volunteer':
+          Navigator.of(context).pushReplacementNamed('/home_page');
+          break;
+        default:
       }
     });
     return const Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Text("Tunggu Sebentar ya.."),
+        child: CircularProgressIndicator(
+          color: Colors.blueAccent,
+        ),
       ),
     );
   }

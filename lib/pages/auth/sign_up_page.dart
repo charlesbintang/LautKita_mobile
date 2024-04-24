@@ -78,6 +78,7 @@ class _SignUpPageState extends State<SignUpPage> {
           "password": _passwordController.text.trim(),
           "name": _firstNameController.text.trim(),
           "role": selectedStatus ?? "user",
+          "isValid": false
         };
 
         userRef.set(userData).then(

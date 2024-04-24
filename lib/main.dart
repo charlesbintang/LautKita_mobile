@@ -11,6 +11,7 @@ import 'package:lautkita_mobile/common/global_variables.dart';
 import 'package:lautkita_mobile/pages/auth/login_page.dart';
 import 'package:lautkita_mobile/pages/auth/sign_up_page.dart';
 import 'package:lautkita_mobile/pages/community/pages/c_home_page.dart';
+import 'package:lautkita_mobile/pages/community/pages/onboarding_community.dart';
 import 'package:lautkita_mobile/pages/volunteer/home_page.dart';
 import 'package:lautkita_mobile/pages/loading.dart';
 
@@ -65,6 +66,7 @@ class MyApp extends StatelessWidget {
             '/loading': (context) => const Loading(),
             '/home_page': (context) => const HomePage(),
             '/c_home_page': (context) => const CHomePage(),
+            '/onboarding-community': (context) => const OnboardingCommunity()
           },
           home: StreamBuilder(
             stream: FirebaseAuth.instance.authStateChanges(),
